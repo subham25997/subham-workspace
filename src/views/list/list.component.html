@@ -1,0 +1,22 @@
+<div class="row mx-0">
+    <div class="col-12 d-flex justify-content-between ps-3 pt-2 pb-4 pe-1">
+        <h3 class="mb-0">Weather Data</h3>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary">Card</button>
+            <button type="button" class="btn btn-primary">List</button>
+          </div>
+    </div>
+    @for(data of weather; track data.id) {
+        <div class="col-md-4 ps-3 pe-0">
+            <div class="card">
+                <div class="card-body">
+                    <div>
+                        {{ data.city }}
+                    </div>
+                    <h1>25<sup>oC</sup></h1>
+                </div>
+            </div>
+        </div>
+    }
+    
+</div>

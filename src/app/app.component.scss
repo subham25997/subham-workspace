@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box;
+}
+
+#appLayout {
+    background-color: #eee;
+    display: flex;
+    height: calc(100vh - 66px);
+    padding: 1rem;
+
+    .main-content {
+        width: 100%;
+        padding: 0;
+    }
+}
