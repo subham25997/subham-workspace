@@ -1,0 +1,20 @@
+
+
+.card {
+    box-shadow: 0 0 8px 5px #ededed;
+    border: none;
+}
+
+.text-caption {
+    font-size: 14px;
+}
+
+.weather-card {
+    background: #8ecaff;
+    color: #fff;
+   
+    .weather-condition {
+        font-size: 28px;
+        font-weight: 600;
+    }
+}

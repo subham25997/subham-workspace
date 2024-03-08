@@ -1,9 +1,13 @@
 .side-navigation {
     // float: left;
     width: 300px;
-    height: 100%;
     min-height: 400px;
     overflow-y: auto;
+    border-radius: 0;
+    position: absolute;
+    top: 66px;
+    bottom: 0;
+    left: 0;
 
     .card {
         height: 100%;

@@ -1,0 +1,17 @@
+.user-settings-form {
+    height: calc(100vh - 100px);
+
+    .card {
+        box-shadow: 0 0 8px 5px #ededed;
+        border: none;
+        width: 50%;
+
+        .save-btn {
+            border-radius: 0;
+            min-width: 140px;
+            margin: 5px 0;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+        }
+    }
+}

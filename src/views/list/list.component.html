@@ -1,22 +1,146 @@
-<div class="row mx-0">
-    <div class="col-12 d-flex justify-content-between ps-3 pt-2 pb-4 pe-1">
-        <h3 class="mb-0">Weather Data</h3>
-        <div class="btn-group">
-            <button type="button" class="btn btn-primary">Card</button>
-            <button type="button" class="btn btn-primary">List</button>
-          </div>
-    </div>
-    @for(data of weather; track data.id) {
-        <div class="col-md-4 ps-3 pe-0">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 p-3">
             <div class="card">
-                <div class="card-body">
-                    <div>
-                        {{ data.city }}
+                <div class="card-body d-flex justify-content-between">
+                    <h3 class="mb-0">Weather Data</h3>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary">Card</button>
+                        <button type="button" class="btn btn-primary">List</button>
                     </div>
-                    <h1>25<sup>oC</sup></h1>
                 </div>
             </div>
         </div>
-    }
-    
+
+        <div class="col-12 px-3 pb-3">
+            <div class='card weather-card'>
+                <div class="card-body">
+                    <div class="row justify-content-between">
+                        <div class="col-12 mb-3 px-3">
+                            <h5 class="d-flex">
+                                <span>
+                                    Latitude: {{ weather.latitude }}
+                                </span>
+                                <span class="mx-2">|</span>
+                                <span>
+                                    Longitude: {{ weather.longitude }} ({{ weather.timezone }})
+                                </span>
+                            </h5>
+
+                        </div>
+                        <!-- @for(condition of weatherConditions; track condition.key) {
+                        <div class="col-md-3 col-sm-6 col-12">
+                            <div class="d-flex flex-column">
+                                <div class="mb-3 text-center">
+                                    <img [src]="'../../assets/' + condition.image" alt="temperature" width="70"
+                                        height="70">
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-caption">{{ condition.displayName }}</div>
+                                    <div class="weather-condition">{{ weather.current[condition.key] }} {{
+                                        weather.current_units[condition.key] }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        } -->
+
+                        <div class="col-md-3 col-sm-6 col-12">
+                            <div class="d-flex flex-column">
+                                <div class="mb-3 text-center">
+                                    <img [src]="'../../assets/' + weatherConditions[0].image" alt="temperature" width="70"
+                                        height="70">
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-caption">{{ weatherConditions[0].displayName }}</div>
+                                    <div class="weather-condition">{{ weather.current.temperature_2m }} {{
+                                        weather.current_units.temperature_2m }}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6 col-12">
+                            <div class="d-flex flex-column">
+                                <div class="mb-3 text-center">
+                                    <img [src]="'../../assets/' + weatherConditions[1].image" alt="temperature" width="70"
+                                        height="70">
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-caption">{{ weatherConditions[1].displayName }}</div>
+                                    <div class="weather-condition">{{ weather.current.precipitation }} {{
+                                        weather.current_units.precipitation }}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6 col-12">
+                            <div class="d-flex flex-column">
+                                <div class="mb-3 text-center">
+                                    <img [src]="'../../assets/' + weatherConditions[2].image" alt="temperature" width="70"
+                                        height="70">
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-caption">{{ weatherConditions[2].displayName }}</div>
+                                    <div class="weather-condition">{{ weather.current.wind_speed_10m }} {{
+                                        weather.current_units.wind_speed_10m }}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6 col-12">
+                            <div class="d-flex flex-column">
+                                <div class="mb-3 text-center">
+                                    <img [src]="'../../assets/' + weatherConditions[3].image" alt="temperature" width="70"
+                                        height="70">
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-caption">{{ weatherConditions[3].displayName }}</div>
+                                    <div class="weather-condition">{{ weather.current.relative_humidity_2m }} {{
+                                        weather.current_units.relative_humidity_2m }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @for(time of weather.daily.time; let index = $index; track time) { <div class="col-6 col-md-4 pb-3 px-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-caption mb-3">
+                        {{ time }}
+                    </div>
+                    <div class="row">
+                        <!-- @for (item of dailyWeatherConditions; track item) {
+                        <div class="col flex-column d-flex">
+                            <img height="24" width="24" [src]="'../../assets/' + item.image">
+                            <h5>
+                                {{ weather.daily[item.key][index] }} {{ weather.daily_units[item.key] }}
+                            </h5>
+                        </div>
+                        } -->
+                        <div class="col flex-column d-flex">
+                            <img height="24" width="24" [src]="'../../assets/' + dailyWeatherConditions[0].image">
+                            <h5>
+                                {{ weather.daily.temperature_2m_max[index] }} {{ weather.daily_units.temperature_2m_max }}
+                            </h5>
+                        </div>
+                        <div class="col flex-column d-flex">
+                            <img height="24" width="24" [src]="'../../assets/' + dailyWeatherConditions[1].image">
+                            <h5>
+                                {{ weather.daily.precipitation_sum[index] }} {{ weather.daily_units.precipitation_sum }}
+                            </h5>
+                        </div>
+                        <div class="col flex-column d-flex">
+                            <img height="24" width="24" [src]="'../../assets/' + dailyWeatherConditions[2].image">
+                            <h5>
+                                {{ weather.daily.wind_speed_10m_max[index] }} {{ weather.daily_units.wind_speed_10m_max }}
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+
+    </div>
 </div>
