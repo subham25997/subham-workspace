@@ -1,27 +1,68 @@
 <div class="container-fluid">
-    <form (ngSubmit)="saveUserDetails()">
+    <form [formGroup]="profileForm" (ngSubmit)="saveUserDetails()">
         <div class="d-flex justify-content-center align-items-center user-settings-form">
             <div class="card">
+                <div class="card-header px-4 py-3 bg-white">
+                    <h4 class="m-0 text-secondary">User Settings</h4>
+                </div>
                 <div class="card-body p-4">
+                    @if(saveSuccess) {
+
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        <strong>Success!</strong> User details saved successfully.
+                    </div>
+                    }
                     <div class="form-group mb-3">
-                        <label class="form-label" for="userName">User Name</label>
-                        <input name="userName" id="userName" type="text" class="form-control" />
+                        <label class="form-label">User Name <span class="text-danger">*</span></label>
+                        <input formControlName="userName" type="text" class="form-control" />
+                        <!-- @if (profileForm.statusChanges && formControls['userName'].errors) {
+                            <div class="text-danger">
+                              @if (formControls['userName'].errors['required']) {
+                              <div>User name is required</div>
+                              }
+                            </div>
+                            } -->
                     </div>
                     <div class="form-group mb-3">
-                        <label class="form-label" for="email">Email</label>
-                        <input name="email" id="email" type="email" class="form-control" />
+                        <label class="form-label">Email <span class="text-danger">*</span></label>
+                        <input formControlName="email" type="email" class="form-control" />
+                        <!-- @if (profileForm.statusChanges && formControls['email'].errors) {
+                            <div class="text-danger">
+                              @if (formControls['email'].errors['required']) {
+                              <div>Email id is required</div>
+                              }
+                              @if (formControls['email'].errors['email']) {
+                              <div>Email correct email id</div>
+                              }
+                            </div>
+                            } -->
                     </div>
                     <div class="form-group mb-3">
-                        <label class="form-label" for="phoneNo">Phone No</label>
-                        <input name="phoneNo" id="phoneNo" type="number" class="form-control" />
+                        <label class="form-label">Phone No <span class="text-danger">*</span></label>
+                        <input formControlName="phoneNo" type="number" class="form-control" />
+                        <!-- @if (profileForm.statusChanges && formControls['phoneNo'].errors) {
+                            <div class="text-danger">
+                              @if (formControls['phoneNo'].errors['required']) {
+                              <div>Phone no is required</div>
+                              }
+                            </div>
+                            } -->
                     </div>
                     <div class="form-group mb-3">
-                        <label class="form-label" for="address">Address</label>
-                        <textarea name="address" id="address" type="email" class="form-control"></textarea>
+                        <label class="form-label">Address <span class="text-danger">*</span></label>
+                        <textarea formControlName="address" class="form-control"></textarea>
+                        <!-- @if (profileForm.statusChanges && formControls['address'].errors) {
+                            <div class="text-danger">
+                              @if (formControls['address'].errors['required']) {
+                              <div>Phone no is required</div>
+                              }
+                            </div>
+                            } -->
                     </div>
                 </div>
-                <div class="card-footer d-flex justify-content-end">
-                    <button type="submit" class="btn btn-primary save-btn">Save</button>
+                <div class="card-footer d-flex justify-content-end bg-white">
+                    <button type="submit" class="btn btn-primary save-btn" [disabled]="!profileForm.valid">Save</button>
                 </div>
             </div>
         </div>

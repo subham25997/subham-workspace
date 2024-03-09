@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './top-bar.component.scss'
 })
 export class TopBarComponent {
-
+  userDetails: any = localStorage.getItem("user-details");
+  userName = this.userDetails ? JSON.parse(this.userDetails).userName : 'Ramakrishna Manna';
 }

@@ -1,5 +1,7 @@
 .user-settings-form {
-    height: calc(100vh - 100px);
+    height: 100%;
+    overflow: auto;
+    padding: 24px;
 
     .card {
         box-shadow: 0 0 8px 5px #ededed;
