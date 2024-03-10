@@ -9,10 +9,11 @@ import Icon from 'ol/style/Icon';
 import Text from 'ol/style/Text';
 import OSM from 'ol/source/OSM';
 import * as olProj from 'ol/proj';
-import TileLayer from 'ol/layer/Tile';
+import Tile from 'ol/layer/Tile';
 import Feature from 'ol/Feature'
 import Point from 'ol/geom/Point'
 import Fill from 'ol/style/Fill'
+import Stroke from 'ol/style/Stroke'
 
 @Component({
   selector: 'app-map',
@@ -23,71 +24,88 @@ import Fill from 'ol/style/Fill'
 })
 export class MapComponent {
   map: any;
-  markerSource = new VectorSource();
+  
   restaurantsNearMe = [{
     name: 'Restaurant 1',
     long: 77.6233,
     lat: 12.9175
   }, {
     name: 'Restaurant 2',
-    long: 77.6233,
-    lat: 12.9183
+    long: 77.6423,
+    lat: 12.9181
+  }, {
+    name: 'Restaurant 3',
+    long: 77.6325,
+    lat: 12.9182
+  }, {
+    name: 'Restaurant 4',
+    long: 77.6275,
+    lat: 12.9182
+  }, {
+    name: 'Restaurant 5',
+    long: 77.6275,
+    lat: 12.9252
   }];
-  markerStyle!: Style;
+  
 
   ngOnInit() {
-    this.restaurantsNearMe.forEach(restaurant => this.addMarker(restaurant.long, restaurant.lat, restaurant.name));
 
     this.map = new Map({
       target: 'map',
       layers: [
-        new TileLayer({
+        new Tile({
           source: new OSM(),
         }),
-        new VectorLayer({
-          source: this.markerSource,
-          style: this.markerStyle,
-        })
+        
       ],
       view: new View({
         center: olProj.fromLonLat([77.6234, 12.9166]),
-        zoom: 15
+        zoom: 15,
       })
-
     });
 
+    this.restaurantsNearMe.forEach((restaurant) => this.addMarker(restaurant.long, restaurant.lat, restaurant.name));
+
   }
-
-
-
+  
   addMarker(lon: number, lat: number, text: string) {
-    this.markerStyle = new Style({
-      image: new Icon(/** @type {olx.style.IconOptions} */({
+    let markerStyle = new Style({
+      image: new Icon(/** @type {olx.style.IconOptions} */ ({
         anchor: [0.5, 46],
         anchorXUnits: 'fraction',
         anchorYUnits: 'pixels',
+        height: 40,
         opacity: 1,
-        height: 50,
         src: '../../assets/marker.webp'
-      }),),
+      })),
       text: new Text({
+        scale: 1.6,
         text: text,
-        scale: 1.5,
-        backgroundFill: new Fill({
-          color: 'rgba(255,255,255,0.8)'
-        }),
         fill: new Fill({
-          color: '#333',
-        })
-      })
+          color: "#009688"
+        }),
+        stroke: new Stroke({
+          color: "#ffffff",
+          width: 2
+        }),
+      }) 
     });
 
+    let markerSource = new VectorSource();
+    this.map.addLayer(new VectorLayer({
+      source: markerSource,
+      style: markerStyle,
+    }))
 
     var iconFeature = new Feature({
-      geometry: new Point(olProj.transform([lon, lat], 'EPSG:4326', 'EPSG:3857'))
+      geometry: new Point(olProj.transform([lon, lat], 'EPSG:4326',
+        'EPSG:3857')),
+      name: 'Null Island',
+      population: 4000,
+      rainfall: 500
     });
 
-
-    this.markerSource.addFeature(iconFeature);
+    
+    markerSource.addFeature(iconFeature);
   }
 }
