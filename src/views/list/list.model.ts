@@ -19,7 +19,7 @@ export interface CurrentUnits {
 }
 
 export interface Daily {
-    precipitation_sum: Array<Number>;
+    precipitation_sum: [];
     temperature_2m_max: [];
     time: [],
     wind_direction_10m_dominant: [];

@@ -1,5 +1,5 @@
-<div class="container-fluid">
-    <form [formGroup]="profileForm" (ngSubmit)="saveUserDetails()">
+<div class="container-fluid" style="height: 100%;">
+    <form [formGroup]="profileForm" (ngSubmit)="saveUserDetails()" style="height: 100%;">
         <div class="d-flex justify-content-center align-items-center user-settings-form">
             <div class="card">
                 <div class="card-header px-4 py-3 bg-white">
@@ -13,62 +13,56 @@
                         <strong>Success!</strong> User details saved successfully.
                     </div>
                     }
-                    <div class="form-group mb-3">
-                        <label class="form-label">User Name <span class="text-danger">*</span></label>
-                        <input formControlName="userName" type="text" class="form-control" />
-                        <!-- @if (profileForm.statusChanges && formControls['userName'].errors) {
-                            <div class="text-danger">
-                              @if (formControls['userName'].errors['required']) {
-                              <div>User name is required</div>
-                              }
+                    <div class="d-flex">
+                        <div class="flex-shrink-1 mb-3 me-4">
+                            <img src="../../assets/user.png" alt="user" width="150" height="150">
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label">First Name <span class="text-danger">*</span></label>
+                                <input formControlName="firstName" type="text" class="form-control" />
                             </div>
-                            } -->
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label">Last Name <span class="text-danger">*</span></label>
+                                <input formControlName="lastName" type="text" class="form-control" />
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label">Email <span class="text-danger">*</span></label>
+                                <input formControlName="email" type="email" class="form-control" />
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label">Phone No <span class="text-danger">*</span></label>
+                                <input formControlName="phoneNo" type="number" class="form-control" />
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label class="form-label">Address <span class="text-danger">*</span></label>
+                                <textarea formControlName="address" class="form-control"></textarea>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group mb-3">
+
+                    <!-- <div class="form-group mb-3">
                         <label class="form-label">Email <span class="text-danger">*</span></label>
                         <input formControlName="email" type="email" class="form-control" />
-                        <!-- @if (profileForm.statusChanges && formControls['email'].errors) {
-                            <div class="text-danger">
-                              @if (formControls['email'].errors['required']) {
-                              <div>Email id is required</div>
-                              }
-                              @if (formControls['email'].errors['email']) {
-                              <div>Email correct email id</div>
-                              }
-                            </div>
-                            } -->
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-label">Phone No <span class="text-danger">*</span></label>
                         <input formControlName="phoneNo" type="number" class="form-control" />
-                        <!-- @if (profileForm.statusChanges && formControls['phoneNo'].errors) {
-                            <div class="text-danger">
-                              @if (formControls['phoneNo'].errors['required']) {
-                              <div>Phone no is required</div>
-                              }
-                            </div>
-                            } -->
-                    </div>
-                    <div class="form-group mb-3">
+                    </div> -->
+                    <!-- <div class="form-group mb-3">
                         <label class="form-label">Address <span class="text-danger">*</span></label>
                         <textarea formControlName="address" class="form-control"></textarea>
-                        <!-- @if (profileForm.statusChanges && formControls['address'].errors) {
-                            <div class="text-danger">
-                              @if (formControls['address'].errors['required']) {
-                              <div>Phone no is required</div>
-                              }
-                            </div>
-                            } -->
-                    </div>
+                    </div> -->
                 </div>
                 <div class="card-footer d-flex justify-content-end bg-white">
-                    <button type="submit" class="btn btn-primary text-uppercase px-4 my-2" [disabled]="!profileForm.valid || loading">
+                    <button type="submit" class="btn btn-primary text-uppercase px-4 my-2"
+                        [disabled]="!profileForm.valid || loading">
                         @if(loading) {
-                            <span class="spinner-grow spinner-grow-sm"></span> Saving...
+                        <span class="spinner-grow spinner-grow-sm"></span> Saving...
                         } @else {
-                            Save Details
+                        Save Details
                         }
-                        
+
                     </button>
                 </div>
             </div>

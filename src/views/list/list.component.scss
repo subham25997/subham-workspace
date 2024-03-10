@@ -1,20 +1,16 @@
 
 
-.card {
-    box-shadow: 0 0 8px 5px #ededed;
-    border: none;
+.current-time-title {
+    color: #1bb3ec;
 }
 
-.text-caption {
-    font-size: 14px;
+.divider {
+    width: 2px;
+    background: rgb(108, 117, 125);
+    height: 40px;
 }
 
-.weather-card {
-    background: #8ecaff;
-    color: #fff;
-   
-    .weather-condition {
-        font-size: 28px;
-        font-weight: 600;
-    }
+.weather-condition-text {
+   font-size: smaller;
+   color: #aaa;
 }

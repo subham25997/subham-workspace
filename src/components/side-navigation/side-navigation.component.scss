@@ -1,13 +1,20 @@
 .side-navigation {
-    // float: left;
-    width: 300px;
+    width: 260px;
     min-height: 400px;
     overflow-y: auto;
     border-radius: 0;
-    position: absolute;
-    top: 66px;
+    position: fixed;
+    top: 50px;
     bottom: 0;
     left: 0;
+
+    &.minimized {
+        width: 68px;
+
+        .link-name {
+            display: none;
+        }
+    }
 
     .card {
         height: 100%;

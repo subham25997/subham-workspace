@@ -23,7 +23,8 @@ export class SettingsComponent implements OnInit {
     const userInfo = localStorage.getItem("user-details");
     const userDetails: any = userInfo ? JSON.parse(userInfo) : null;
     this.profileForm = new FormGroup({
-      userName: new FormControl(userDetails ? userDetails.userName : "", Validators.required),
+      firstName: new FormControl(userDetails ? userDetails.firstName : "", Validators.required),
+      lastName: new FormControl(userDetails ? userDetails.lastName : "", Validators.required),
       email: new FormControl(userDetails ? userDetails.email : "", Validators.compose([Validators.required, Validators.email])),
       phoneNo: new FormControl(userDetails ? userDetails.phoneNo : "", Validators.compose([Validators.required, Validators.maxLength(10), Validators.minLength(10)])),
       address: new FormControl(userDetails ? userDetails.address : "", Validators.required),

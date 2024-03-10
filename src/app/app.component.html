@@ -1,6 +1,6 @@
 
 <app-top-bar />
-<div id="appLayout">
+<div id="appLayout" [class]="{ 'minimized': appService.sideNavMinimized}">
   <app-side-navigation />
   <main class="main-content">
     <router-outlet />

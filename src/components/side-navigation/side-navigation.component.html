@@ -1,16 +1,28 @@
 
-    <div class="card bg-dark side-navigation">
-        <div class="card-body">
+    <div class="card bg-dark side-navigation" [class]="{ 'minimized': appService.sideNavMinimized}">
+        <div class="card-body px-2">
             <ul class="nav nav-pills flex-column">
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="./home" routerLinkActive="active">Map</a>
+                    <a class="nav-link text-white" routerLink="/home" routerLinkActive="active">
+                        <i class="fa-solid fa-map-location-dot"></i> <span class="link-name ms-3">Map</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="./list" routerLinkActive="active">List</a>
+                    <a class="nav-link text-white" routerLink="/list" routerLinkActive="active">
+                        <i class="fa-solid fa-list"></i> <span class="link-name ms-3">List</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="./settings" routerLinkActive="active">Settings</a>
+                    <a class="nav-link text-white" routerLink="/settings" routerLinkActive="active">
+                        
+                        <i class="fa-solid fa-gear"></i> <span class="link-name ms-3">Settings</span>
+                    </a>
                 </li>
             </ul>
+        </div>
+        <div class="card-footer d-flex justify-content-end" (click)="appService.sideNavMinimized = !appService.sideNavMinimized">
+            <a style="cursor: pointer;" class="text-white px-2">
+                <i class="fa-solid fa-angle-left"></i>
+            </a>
         </div>
     </div>

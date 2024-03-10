@@ -3,11 +3,14 @@
 }
 
 #appLayout {
-    padding-left: 300px;
+    padding-left: 260px;
     background-color: #fafafa;
     display: flex;
-    height: calc(100vh - 66px);
-    overflow: auto;
+    min-height: calc(100vh - 50px);
+
+    &.minimized {
+        padding-left: 68px;
+    }
 
     .main-content {
         width: 100%;
